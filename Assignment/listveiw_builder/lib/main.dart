@@ -21,12 +21,18 @@ class MainApp extends StatelessWidget{
             itemCount: 29,
             physics: const BouncingScrollPhysics(),
             itemBuilder: (BuildContext context,int index){
-              return Text(
-                "index:$index",
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500
-                ),
+              return
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [  
+                  Text(
+                    "index:$index",
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500
+                    ),
+                  ),
+                ],
               );
             },
           ),
