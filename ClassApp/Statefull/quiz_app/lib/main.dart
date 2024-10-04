@@ -23,29 +23,29 @@ class _QuizAppState extends State{
 
   List<Map> allQuestions=[
     {
-      "question":"who is a founder of microsoft",
-      "Options":["Steve Jobs","Bil Gates","Larry Page","Elon Musk"],
+      "question":"If the data type is not known then which keyword is used infer the data type",
+      "Options":["auto","var","int","num"],
       "correctAnswer":1,
     },
     {
-      "question":"who is a founder of google",
-      "Options":["Steve Jobs","Bil Gates","Larry Page","Elon Musk"],
-      "correctAnswer":2,
-    },
-    {
-      "question":"who is a founder of spaceX",
-      "Options":["Steve Jobs","Bil Gates","Larry Page","Elon Musk"],
+      "question":"------ data type  is used to represent the sequence of Character",
+      "Options":["int","double","str","string"],
       "correctAnswer":3,
     },
     {
-      "question":"who is a founder of Apple",
-      "Options":["Steve Jobs","Bil Gates","Larry Page","Elon Musk"],
-      "correctAnswer":0,
+      "question":"Which of the following is not  an  Arithmatic operator",
+      "Options":[" - "," % "," / ","@"],
+      "correctAnswer":3,
     },
     {
-      "question":"who is a founder of Meta",
-      "Options":["Steve Jobs","Mark Zuckerberg","Larry Page","Elon Musk"],
-      "correctAnswer":1,
+      "question":"Which keyword  is used to start a while loop in dart ",
+      "Options":["loop"," do "," while "," for"],
+      "correctAnswer":2,
+    },
+    {
+      "question":"Object class is not a parent of which class ",
+      "Options":["Null"," int "," double "," dynamic"],
+      "correctAnswer":0,
     },
   ];
 
@@ -83,7 +83,7 @@ bool questionPage=true;
           ),
           ),
           centerTitle: true,
-          backgroundColor: Colors.blue,
+          backgroundColor: Colors.black,
         ),
         body:  Column(
           crossAxisAlignment:CrossAxisAlignment.center,
@@ -93,6 +93,7 @@ bool questionPage=true;
             ),
             //   QUESTION NUMBER
             Row(
+              //mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(
                     width: 100,
@@ -112,13 +113,13 @@ bool questionPage=true;
             
             SizedBox(
               width: 380,
-              height: 50,
+              height: 70,
               child: Text(allQuestions[currentQuestionIndex]["question"],
               
               style: const TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.w600,
-                color: Colors.purple,
+                fontSize: 20,
+                fontWeight: FontWeight.w900,
+                color: Colors.black,
               ),
               
               ),
@@ -252,17 +253,18 @@ bool questionPage=true;
           child: const Icon(Icons.forward,color: Colors.orange,
           ),
         ), 
-        backgroundColor: const Color.fromARGB(255, 200, 207, 119),  
+        backgroundColor: const Color.fromARGB(255, 165, 132, 222),
     );
     }else{
       return Scaffold(
         appBar: AppBar(
           title: const Text("Quiz Result",
           style: TextStyle(fontSize: 28,
-          fontWeight: FontWeight.w600),
+          fontWeight: FontWeight.w600,
+          color: Colors.white),
         
           ),
-          backgroundColor: Colors.blue,
+          backgroundColor: Colors.black,
           centerTitle: true,
         ),
         body:  Center(
@@ -270,13 +272,13 @@ bool questionPage=true;
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.network("https://static.vecteezy.com/system/resources/thumbnails/019/013/598/small_2x/medal-awards-and-trophies-png.png" ,
-              height: 200,),
+              height: 300,),
               const SizedBox( height: 30,),
               const Text("Congratulations",
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.w900,
-                color: Colors.orange,
+                color: Colors.black,
                 ),
               ),
               const SizedBox(
@@ -303,15 +305,16 @@ bool questionPage=true;
                   backgroundColor: WidgetStatePropertyAll(Colors.blue),
                 ),
                 child: const Text("Start Again",
-                style:  TextStyle(fontSize: 22,
-                fontWeight: FontWeight.w300,
-                color: Colors.orange
+                style:  TextStyle(fontSize: 23,
+                fontWeight: FontWeight.w500,
+                color: Colors.black
                 ),
                 ),
               ) 
             ],
           ),
         ),
+        backgroundColor: const Color.fromARGB(255, 165, 132, 222),
       );
     }
   }
