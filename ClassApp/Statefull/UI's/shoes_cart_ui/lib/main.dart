@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import 'package:flutter/src/rendering/box.dart';
+//import 'package:flutter/src/rendering/box.dart';
 
 void main() {
   runApp(const ShoesCartApp());
@@ -43,9 +43,6 @@ class _ShoesCartAppState extends State {
                         ],
                       )
                     ],
-ui 
-
-
                   ),
                 );
               },

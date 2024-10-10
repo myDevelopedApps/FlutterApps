@@ -1,11 +1,4 @@
-//import "dart:ui";
-
 import "package:flutter/material.dart";
-import "package:flutter/rendering.dart";
-import "package:flutter/widgets.dart";
-//import "package:flutter/painting.dart";
-//import "package:flutter/widgets.dart";
-//import 'package:flutter/src/rendering/box.dart';
 
 void main() {
   runApp(const ShoesCartApp());
@@ -18,21 +11,23 @@ class ShoesCartApp extends StatefulWidget {
 }
 
 class _ShoesCartAppState extends State {
-  @override
+  @override 
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner:false,
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: const Text(
             "My Cart",
             style: TextStyle(
-                fontSize: 25, fontWeight: FontWeight.w700, color: Color.fromARGB(255, 78, 3, 158)),
+                fontSize: 25,
+                fontWeight: FontWeight.w700,
+                color: Color.fromARGB(255, 78, 3, 158)),
           ),
           centerTitle: true,
         ),
         body: Padding(
-          padding:const  EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8),
           child: Column(
             children: [
               Container(
@@ -69,7 +64,12 @@ class _ShoesCartAppState extends State {
                             width: 220,
                             child: Row(
                               children: [
-                                const Text("\$570.00",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w900),),
+                                const Text(
+                                  "\$570.00",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w900),
+                                ),
                                 const SizedBox(
                                   height: 5,
                                   width: 55,
@@ -133,7 +133,12 @@ class _ShoesCartAppState extends State {
                             width: 200,
                             child: Row(
                               children: [
-                                const Text("\$77.00",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w900),),
+                                const Text(
+                                  "\$77.00",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w900),
+                                ),
                                 const SizedBox(
                                   height: 5,
                                   width: 50,
@@ -162,63 +167,82 @@ class _ShoesCartAppState extends State {
               const SizedBox(
                 height: 180,
                 width: 50,
-              //child: Colors.amber,
+                //child: Colors.amber,
               ),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                 children: [
-                  Text("subtotal :",style: TextStyle(
-                    fontSize: 19,
-                    fontWeight: FontWeight.w600
-                  ),),
-                  Text("\$800.00",style: TextStyle(fontSize: 22,fontWeight: FontWeight.w700
+                children: [
+                  Text(
+                    "subtotal :",
+                    style: TextStyle(fontSize: 19, fontWeight: FontWeight.w600),
                   ),
+                  Text(
+                    "\$800.00",
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
                   ),
                 ],
               ),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                 children: [
-                  Text("Delevery Fee:",style: TextStyle(
-                    fontSize: 19,
-                    fontWeight: FontWeight.w600
-                  ),),
-                  Text("\$5.00",style: TextStyle(fontSize: 22,fontWeight: FontWeight.w700
+                children: [
+                  Text(
+                    "Delevery Fee:",
+                    style: TextStyle(fontSize: 19, fontWeight: FontWeight.w600),
                   ),
+                  Text(
+                    "\$5.00",
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
                   ),
                 ],
               ),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                 children: [
-                  Text("Discount :",style: TextStyle(
-                    fontSize: 19,
-                    fontWeight: FontWeight.w600
-                  ),),
-                  Text("\$40%",style: TextStyle(fontSize: 22,fontWeight: FontWeight.w700
+                children: [
+                  Text(
+                    "Discount",
+                    style: TextStyle(fontSize: 19, fontWeight: FontWeight.w600),
                   ),
+                  Text(
+                    "\$40%",
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
                   ),
                 ],
               ),
               const SizedBox(
                 height: 40,
               ),
-              ElevatedButton(onPressed: (){},
-               style:  const ButtonStyle(backgroundColor: WidgetStatePropertyAll(Color.fromARGB(255, 78, 3, 158),
+              // ElevatedButton(
+              //   onPressed: () {},
+              //   style: const ButtonStyle(
+              //     backgroundColor: WidgetStatePropertyAll(
+              //       Color.fromARGB(255, 78, 3, 158),
+              //     ),
+              //   ),
+              //   child: const Text(
+              //     "Cheakout for \$480.00 ",
+              //     style: TextStyle(
+              //         fontSize: 17,
+              //         fontWeight: FontWeight.w500,
+              //         color: Colors.white),
+              //   ),
+              // )
 
-               ),
-               
-               ),
-               
-               child:  const Text("Cheakout for \$480.00 ",style: TextStyle(fontSize: 17,
-               fontWeight: FontWeight.w500,
-               color: Colors.white
-
-               ),
-               ),
-               
-               
-               )
+              Container(
+                height: 50,
+                width: 350,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: Colors.purple,
+                ),
+                child: const Text(
+                  "Cheakout for \$480.00 ",
+                  style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white),
+                ),
+              )
             ],
           ),
         ),
@@ -226,5 +250,3 @@ class _ShoesCartAppState extends State {
     );
   }
 }
-
-
