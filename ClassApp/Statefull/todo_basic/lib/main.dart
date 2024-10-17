@@ -13,6 +13,44 @@ class TodoApp extends StatefulWidget {
 }
 
 class _TodoAppState extends State {
+
+  void openBottamSHeet(){
+    showModalBottomSheet(
+      context: context, 
+      builder: (context){
+        return const Column(
+          children: [
+            Center(child: const Text("Create Task",style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w500
+            ),
+            ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Column(
+              children: [
+
+                const Text("Title"),
+                TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                  ),
+                  
+                )
+
+
+
+              ],
+            )
+          ],
+          
+        );
+        
+      }
+      );
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -113,6 +151,16 @@ class _TodoAppState extends State {
             },
           ),
         ),
+        floatingActionButton:FloatingActionButton(
+          onPressed: (){
+            openBottamSHeet();
+          },
+          backgroundColor: const Color.fromRGBO(2, 167, 177, 1),
+          child: const Icon(Icons.add,
+          color: Colors.white,),
+        
+
+        )
       ),
     );
   }
