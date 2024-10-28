@@ -1,3 +1,4 @@
+import 'package:expence_manager_ui_ux/todo_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/svg.dart';
@@ -18,10 +19,56 @@ class _ExpenceManagerAppUIState extends State {
   TextEditingController descriptionController = TextEditingController();
   TextEditingController dateController = TextEditingController();
 
-  void showBottomSheet() {
+  List<TodoModel> todoCards = [
+    TodoModel(
+        title: "Flutter",
+        description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum eros at elit lacinia, non laoreet nisi tempor. Proin nulla orci, laoreet vitae elit et, consectetur aliquam tortor. Nunc nec lorem rutrum, vestibulum tortor quis, efficitur felis. Ut a efficitur nunc. Nulla eu euismod augue.",
+        date: "28 feb,2024"),
+    TodoModel(
+        title: "Java",
+        description:
+            "Nulla auctor odio vitae gravida efficitur. Nullam in arcu a sem lacinia pulvinar. Aenean varius ante aliquam eros ornare pellentesque. Curabitur at porta mauris. Vivamus vitae vulputate urna. Suspendisse pulvinar justo ac justo posuere, sit amet tempus tellus gravida. Praesent eleifend sollicitudin maximus. ",
+        date: "25 feb,2024"),
+    TodoModel(
+        title: "Python",
+        description:
+            "Nullam sagittis pulvinar felis eu rhoncus. Sed augue ipsum, faucibus in ante a, euismod elementum ipsum. Nullam pulvinar felis nec egestas malesuada. Vestibulum ac ornare odio. Pellentesque pharetra libero id consequat viverra. Nulla aliquet efficitur vulputate. Duis blandit rhoncus fermentum. ",
+        date: "28 feb,2024"),
+  ];
+
+  void submit(bool isEdit, [TodoModel? todoObj]) {
+    if (titleController.text.trim().isNotEmpty &&
+        descriptionController.text.trim().isNotEmpty &&
+        dateController.text.trim().isNotEmpty) {
+      if (isEdit) {
+        //EDIT
+        todoObj!.title = titleController.text;
+        todoObj.description = descriptionController.text;
+        todoObj.date = dateController.text;
+      } else {
+        //NEW ADD
+        todoCards.add(TodoModel(
+            title: titleController.text,
+            description: descriptionController.text,
+            date: dateController.text));
+      }
+    }
+    Navigator.of(context).pop();
+    clearController();
+    setState(() {});
+  }
+
+  void clearController() {
+    titleController.clear();
+    descriptionController.clear();
+    dateController.clear();
+  }
+
+  void showBottomSheet(bool isEdit, [TodoModel? todoObj]) {
     showModalBottomSheet(
-      isScrollControlled: true,
-      isDismissible: true,
+        isScrollControlled: true,
+        isDismissible: true,
         context: context,
         builder: (context) {
           return Padding(
@@ -47,7 +94,7 @@ class _ExpenceManagerAppUIState extends State {
                     ),
                   ],
                 ),
-            
+
                 ///TITLE
                 Padding(
                   padding: const EdgeInsets.all(10.0),
@@ -71,15 +118,17 @@ class _ExpenceManagerAppUIState extends State {
                             fontWeight: FontWeight.w500,
                             color: Color.fromRGBO(117, 115, 115, 1),
                           ),
+
                           ///WHEN WE CLICK ON TEXTFIELD IT WILL SHOW FOUSEDBORDER
-                            focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: const BorderSide(
-                            color: Color.fromRGBO(0, 139, 148, 1),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: const BorderSide(
+                              color: Color.fromRGBO(0, 139, 148, 1),
+                            ),
                           ),
-                        ),
-                        ///USED WHEN WE HAVE TO GIVE BORDER TO TEXTFIELD
-                        border: OutlineInputBorder(
+
+                          ///USED WHEN WE HAVE TO GIVE BORDER TO TEXTFIELD
+                          border: OutlineInputBorder(
                             borderSide: const BorderSide(
                               color: Colors.purpleAccent,
                             ),
@@ -90,7 +139,7 @@ class _ExpenceManagerAppUIState extends State {
                     ],
                   ),
                 ),
-            
+
                 ///DESCRIPTION
                 Padding(
                   padding: const EdgeInsets.all(10.0),
@@ -114,15 +163,17 @@ class _ExpenceManagerAppUIState extends State {
                             fontWeight: FontWeight.w500,
                             color: Color.fromRGBO(117, 115, 115, 1),
                           ),
+
                           ///WHEN WE CLICK ON TEXTFIELD IT WILL SHOW FOUSEDBORDER
-                            focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: const BorderSide(
-                            color: Color.fromRGBO(0, 139, 148, 1),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: const BorderSide(
+                              color: Color.fromRGBO(0, 139, 148, 1),
+                            ),
                           ),
-                        ),
-                        ///USED WHEN WE HAVE TO GIVE BORDER TO TEXTFIELD
-                        border: OutlineInputBorder(
+
+                          ///USED WHEN WE HAVE TO GIVE BORDER TO TEXTFIELD
+                          border: OutlineInputBorder(
                             borderSide: const BorderSide(
                               color: Colors.purpleAccent,
                             ),
@@ -133,8 +184,7 @@ class _ExpenceManagerAppUIState extends State {
                     ],
                   ),
                 ),
-            
-            
+
                 ///DATE & DATE PICKER
                 Padding(
                   padding: const EdgeInsets.all(10.0),
@@ -158,30 +208,32 @@ class _ExpenceManagerAppUIState extends State {
                             fontWeight: FontWeight.w500,
                             color: Color.fromRGBO(117, 115, 115, 1),
                           ),
+
                           ///WHEN WE CLICK ON TEXTFIELD IT WILL SHOW FOUSED BORDER
-                            focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: const BorderSide(
-                            color: Color.fromRGBO(0, 139, 148, 1),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: const BorderSide(
+                              color: Color.fromRGBO(0, 139, 148, 1),
+                            ),
                           ),
-                        ),
-                        
-                        ///USED TO SHOW CALENDER
-                        suffixIcon: const Icon(Icons.calendar_month_outlined),
-                        border: OutlineInputBorder(
+
+                          ///USED TO SHOW CALENDER
+                          suffixIcon: const Icon(Icons.calendar_month_outlined),
+                          border: OutlineInputBorder(
                             borderSide: const BorderSide(
                               color: Colors.purpleAccent,
                             ),
                             borderRadius: BorderRadius.circular(12),
                           ),
                         ),
-                        onTap: () async{
+                        onTap: () async {
                           DateTime? pickedDate = await showDatePicker(
-                            context: context, 
-                            firstDate: DateTime(2002), 
+                            context: context,
+                            firstDate: DateTime(2002),
                             lastDate: DateTime(2025),
                           );
-                          String formattedDate = DateFormat.yMMMd().format(pickedDate!);
+                          String formattedDate =
+                              DateFormat.yMMMd().format(pickedDate!);
 
                           setState(() {
                             dateController.text = formattedDate;
@@ -191,7 +243,7 @@ class _ExpenceManagerAppUIState extends State {
                     ],
                   ),
                 ),
-              
+
                 Padding(
                   padding: const EdgeInsets.only(
                     left: 25,
@@ -200,21 +252,28 @@ class _ExpenceManagerAppUIState extends State {
                     bottom: 10,
                   ),
                   child: ElevatedButton(
-                    onPressed: () {}, 
+                    onPressed: () {
+                      if (isEdit == true) {
+                        submit(true, todoObj);
+                      } else {
+                        submit(false);
+                      }
+                    },
                     style: const ButtonStyle(
                       backgroundColor: WidgetStatePropertyAll(
-                        Color.fromRGBO(89,57,241,1),
+                        Color.fromRGBO(89, 57, 241, 1),
                       ),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Center(
-                        child: Text("Submit",
-                        style: GoogleFonts.quicksand(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white, 
-                        ),
+                        child: Text(
+                          "Submit",
+                          style: GoogleFonts.quicksand(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),
@@ -305,8 +364,8 @@ class _ExpenceManagerAppUIState extends State {
                                 color: Color.fromRGBO(255, 255, 255, 1),
                               ),
                               child: ListView.builder(
-                                physics:const BouncingScrollPhysics(),
-                                  itemCount: 5,
+                                  physics: const BouncingScrollPhysics(),
+                                  itemCount: todoCards.length,
                                   itemBuilder: (context, index) {
                                     return Padding(
                                       padding: const EdgeInsets.only(
@@ -325,7 +384,6 @@ class _ExpenceManagerAppUIState extends State {
                                                     Padding(
                                                       padding:
                                                           const EdgeInsets.only(
-                                                        
                                                         left: 15,
                                                       ),
                                                       child: Container(
@@ -338,10 +396,33 @@ class _ExpenceManagerAppUIState extends State {
                                                           color: Color.fromRGBO(
                                                               89, 57, 241, 1),
                                                         ),
-                                                        child: const Icon(
-                                                          Icons.edit,
-                                                          color: Colors.white,
-                                                          size: 22,
+                                                        child: GestureDetector(
+                                                          onTap: () {
+                                                            titleController
+                                                                    .text =
+                                                                todoCards[index]
+                                                                    .title;
+                                                            descriptionController
+                                                                    .text =
+                                                                todoCards[index]
+                                                                    .description;
+                                                            dateController
+                                                                    .text =
+                                                                todoCards[index]
+                                                                    .date;
+
+                                                            showBottomSheet(
+                                                              true,
+                                                              todoCards[index],
+                                                            );
+
+                                                            setState(() {});
+                                                          },
+                                                          child: const Icon(
+                                                            Icons.edit,
+                                                            color: Colors.white,
+                                                            size: 22,
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
@@ -364,10 +445,19 @@ class _ExpenceManagerAppUIState extends State {
                                                           color: Color.fromRGBO(
                                                               89, 57, 241, 1),
                                                         ),
-                                                        child: const Icon(
-                                                          Icons.delete,
-                                                          color: Colors.white,
-                                                          size: 22,
+                                                        child: GestureDetector(
+                                                          onTap: () {
+                                                            todoCards.remove(
+                                                                todoCards[
+                                                                    index]);
+                                                                    setState(() {
+                                                                    });
+                                                          },
+                                                          child: const Icon(
+                                                            Icons.delete,
+                                                            color: Colors.white,
+                                                            size: 22,
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
@@ -420,7 +510,7 @@ class _ExpenceManagerAppUIState extends State {
                                                             .start,
                                                     children: [
                                                       Text(
-                                                        "Lorem Ipsum is simply dummy industry.",
+                                                        todoCards[index].title,
                                                         style: GoogleFonts
                                                             .quicksand(
                                                           fontSize: 15,
@@ -439,7 +529,8 @@ class _ExpenceManagerAppUIState extends State {
                                                           top: 5,
                                                         ),
                                                         child: Text(
-                                                          "Simply dummy text of the printing and type setting industry. Lorem Ipsum Lorem Ipsum Lorem. ",
+                                                          todoCards[index]
+                                                              .description,
                                                           style: GoogleFonts
                                                               .quicksand(
                                                             fontSize: 13,
@@ -452,7 +543,7 @@ class _ExpenceManagerAppUIState extends State {
                                                         ),
                                                       ),
                                                       Text(
-                                                        "18 October,2024",
+                                                        todoCards[index].date,
                                                         style: GoogleFonts
                                                             .quicksand(
                                                           fontSize: 11,
@@ -486,7 +577,7 @@ class _ExpenceManagerAppUIState extends State {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            showBottomSheet();
+            showBottomSheet(false);
           },
           backgroundColor: const Color.fromRGBO(89, 57, 241, 1),
           child: const Icon(
@@ -499,12 +590,3 @@ class _ExpenceManagerAppUIState extends State {
     );
   }
 }
-
-
-
-
-
-
-
-
-
