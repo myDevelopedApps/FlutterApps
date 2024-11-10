@@ -4,10 +4,11 @@
 import 'package:expence_manager_ui_ux/farmerScreen.dart';
 //import 'package:expence_manager_ui_ux/formerScreen.dart';
 import 'package:expence_manager_ui_ux/model_agreeConnect.dart';
+import 'package:expence_manager_ui_ux/widgets/searchbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
+//import 'package:flutter/painting.dart';
 //import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:flutter_svg/svg.dart';
+//import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 //import 'package:intl/intl.dart';
 
@@ -130,33 +131,33 @@ class _ExpenceManagerAppUIState extends State {
                           color: const Color.fromRGBO(89, 57, 241, 1),
                         ),
                       ),
-                        TextField(
-                          controller: nameController,
-                          decoration: InputDecoration(
-                            hintText: "eg Sunil Banichode",
-                            hintStyle: const TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
-                              color: Color.fromRGBO(117, 115, 115, 1),
-                            ),
+                      TextField(
+                        controller: nameController,
+                        decoration: InputDecoration(
+                          hintText: "eg Sunil Banichode",
+                          hintStyle: const TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                            color: Color.fromRGBO(117, 115, 115, 1),
+                          ),
 
-                            ///WHEN WE CLICK ON TEXTFIELD IT WILL SHOW FOUSEDBORDER
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: const BorderSide(
-                                color: Color.fromRGBO(0, 139, 148, 1),
-                              ),
-                            ),
-
-                            ///USED WHEN WE HAVE TO GIVE BORDER TO TEXTFIELD
-                            border: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                color: Colors.purpleAccent,
-                              ),
-                              borderRadius: BorderRadius.circular(12),
+                          ///WHEN WE CLICK ON TEXTFIELD IT WILL SHOW FOUSEDBORDER
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: const BorderSide(
+                              color: Color.fromRGBO(0, 139, 148, 1),
                             ),
                           ),
+
+                          ///USED WHEN WE HAVE TO GIVE BORDER TO TEXTFIELD
+                          border: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                              color: Colors.purpleAccent,
+                            ),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
                         ),
+                      ),
                     ],
                   ),
                 ),
@@ -386,7 +387,6 @@ class _ExpenceManagerAppUIState extends State {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-         
         backgroundColor: Colors.green,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -417,175 +417,155 @@ class _ExpenceManagerAppUIState extends State {
               child: Column(
                 children: [
                   Expanded(
-                    child: Container(
-                      height: 100,
-                      width: 450,
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(40),
-                          topRight: Radius.circular(40),
+                    child: Column(
+                      children: [
+                        const MysearchBar(),
+                        const SizedBox(
+                          height: 20,
                         ),
-                        color: Color.fromRGBO(217, 217, 217, 1),
-                      ),
-                      child: Column(
-                        children: [
-                          // Padding(
-                          //   padding: const EdgeInsets.all(14),
-                          //   child: Text(
-                          //     "ADD WORKER",
-                          //     style: GoogleFonts.quicksand(
-                          //       fontSize: 16,
-                          //       fontWeight: FontWeight.w600,
-                          //       color: const Color.fromARGB(255, 0, 0, 0),
-                          //     ),
-                          //     textAlign: TextAlign.center,
-                          //   ),
-                          // ),
-                          Expanded(
-                            child: Container(
-                              height: 800,
-                              width: 460,
-                              decoration: const BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(40),
-                                  topRight: Radius.circular(40),
-                                ),
-                                color: Color.fromRGBO(245, 245, 245, 1),
+                        Expanded(
+                          child: Container(
+                            height: 800,
+                            width: 460,
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(40),
+                                topRight: Radius.circular(40),
                               ),
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => const farmerScreen()));
-                                },
-                                child: ListView.builder(
-                                    physics: const BouncingScrollPhysics(),
-                                    itemCount: todoCards.length,
-                                    itemBuilder: (context, index) {
-                                      return Padding(
-                                        padding: const EdgeInsets.only(
-                                          top: 10,
-                                          bottom: 10,
+                              color: Color.fromRGBO(245, 245, 245, 1),
+                            ),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) =>
+                                        const farmerScreen()));
+                              },
+                              child: ListView.builder(
+                                  physics: const BouncingScrollPhysics(),
+                                  itemCount: todoCards.length,
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 7,
+                                          bottom: 7,
+                                          left: 10,
+                                          right: 10),
+                                      child: Container(
+                                        height: 150,
+                                        width: 300,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(30),
+                                          color: const Color.fromRGBO(
+                                              255, 255, 255, 1),
+                                          boxShadow: const [
+                                            BoxShadow(
+                                                color: Color.fromRGBO(
+                                                    0, 0, 0, 0.16),
+                                                spreadRadius: 0,
+                                                blurRadius: 12,
+                                                offset: Offset(0, 4)),
+                                          ],
                                         ),
-                                        child: Container(
-                                          height: 150,
-                                          width: 500,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                                color: Color.fromRGBO(255, 255, 255, 1),
-                                                // gradient:const  LinearGradient
-                                                // (begin:Alignment.topCenter,
-                                                // end:Alignment.bottomCenter,
-                                                // colors: [
-                                                //   Color.fromARGB(255, 136, 231, 140),
-                                                //   Color.fromARGB(255, 227, 213, 90)
-                                                // ] 
-                                                // ),
-                                               //color:  const Color.fromARGB(255, 197, 239, 198),
-                                            // color: const Color.fromARGB(
-                                            //     255, 221, 231, 235),
-                                            //color: Colors.white,
-                                            boxShadow: const [
-                                              BoxShadow(
-                                                  color: Color.fromRGBO(
-                                                      0, 0, 0, 0.16),
-                                                  spreadRadius: 0,
-                                                  blurRadius: 12,
-                                                  offset: Offset(0, 4)),
-                                            ],
-                                          ),
-                                          child: Row(
-                                            children: [
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(10.0),
-                                                child: Container(
-                                                  height: 84,
-                                                  width: 84,
-                                                  decoration:
-                                                       BoxDecoration(
-                                                    shape: BoxShape.rectangle,
-                                                    borderRadius: BorderRadius.circular(20),
-                                                    color:const Color.fromRGBO(
-                                                        217, 217, 217, 1),
-                                                  ),
-                                                  child: Image.asset("assets/images/farmer3.jpg",
-                                                  fit: BoxFit.cover,),
+                                        child: Row(
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(10.0),
+                                              child: Container(
+                                                height: 94,
+                                                width: 84,
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.rectangle,
+                                                  borderRadius:
+                                                      BorderRadius.circular(20),
+                                                  color: const Color.fromRGBO(
+                                                      217, 217, 217, 1),
+                                                ),
+                                                clipBehavior: Clip.antiAlias,
+                                                child: Image.asset(
+                                                  "assets/images/farmer3.jpg",
+                                                  fit: BoxFit.cover,
                                                 ),
                                               ),
-                                              Expanded(
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        todoCards[index].name,
+                                            ),
+                                            Expanded(
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      todoCards[index].name,
+                                                      style:
+                                                          GoogleFonts.quicksand(
+                                                        fontSize: 22,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        color: const Color
+                                                            .fromARGB(
+                                                            255, 0, 0, 0),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                        bottom: 5,
+                                                        top: 5,
+                                                      ),
+                                                      child: Text(
+                                                        todoCards[index].skill,
                                                         style: GoogleFonts
                                                             .quicksand(
-                                                          fontSize: 22,
+                                                          fontSize: 15,
                                                           fontWeight:
-                                                              FontWeight.w700,
+                                                              FontWeight.w600,
                                                           color: const Color
                                                               .fromARGB(
                                                               255, 0, 0, 0),
                                                         ),
                                                       ),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .only(
-                                                          bottom: 5,
-                                                          top: 5,
-                                                        ),
-                                                        child: Text(
-                                                          todoCards[index]
-                                                              .skill,
-                                                          style: GoogleFonts
-                                                              .quicksand(
-                                                            fontSize: 15,
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                            color: const Color
-                                                                .fromARGB(
-                                                                255, 0, 0, 0),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      const SizedBox(
-                                                        height: 5,
-                                                      ),
-                                                      // Text(
-                                                      //   todoCards[index].charge,
-                                                      //   style: GoogleFonts
-                                                      //       .quicksand(
-                                                      //     fontSize: 12,
-                                                      //     fontWeight:
-                                                      //         FontWeight.w800,
-                                                      //     color: const Color
-                                                      //         .fromARGB(
-                                                      //         255, 0, 0, 0),
-                                                      //   ),
-                                                     // ),
-                                                      //Spacer(),
-                                                       Row(children: [
-                                                        
-                                                        //Expanded(child: Image.asset("assets/images/star.png")),
+                                                    ),
+                                                    const SizedBox(
+                                                      height: 5,
+                                                    ),
+                                                    // Text(
+                                                    //   todoCards[index].charge,
+                                                    //   style: GoogleFonts
+                                                    //       .quicksand(
+                                                    //     fontSize: 12,
+                                                    //     fontWeight:
+                                                    //         FontWeight.w800,
+                                                    //     color: const Color
+                                                    //         .fromARGB(
+                                                    //         255, 0, 0, 0),
+                                                    //   ),
+                                                    // ),
+                                                    //Spacer(),
+                                                    Row(children: [
+                                                      //Expanded(child: Image.asset("assets/images/star.png")),
 
-                                                        const Icon(Icons.star,
-                                                        color: Colors.amber,),
-                                                        const Icon(Icons.star,
-                                                          color: Colors.amber,),
-                                                          const Icon(Icons.star,
-                                                          color: Colors.amber,),
-                                                          const Icon(Icons.star_border_outlined,
-                                                          //color: Colors.amber,
-                                                          ),
-                                                        //  SvgPicture.asset("assets/svg/Vector.svg"),
-                                                        //  SvgPicture.asset("assets/svg/Vector2.svg"),
+                                                      const Icon(
+                                                        Icons.star,
+                                                        color: Colors.amber,
+                                                      ),
+                                                      const Icon(
+                                                        Icons.star,
+                                                        color: Colors.amber,
+                                                      ),
+                                                      const Icon(
+                                                        Icons.star,
+                                                        color: Colors.amber,
+                                                      ),
+                                                      const Icon(
+                                                        Icons
+                                                            .star_border_outlined,
+                                                        //color: Colors.amber,
+                                                      ),
+                                                      //  SvgPicture.asset("assets/svg/Vector.svg"),
+                                                      //  SvgPicture.asset("assets/svg/Vector2.svg"),
 
                                                       //   const Icon(Icons.call,
                                                       //   size: 20,),
@@ -606,61 +586,75 @@ class _ExpenceManagerAppUIState extends State {
                                                       //   ),
                                                       // ),
 
-                                                       const  Spacer(),
-                                                        Container(
-                                                          height: 36,
-                                                          width: 36,
-                                                          decoration:
-                                                              const BoxDecoration(
-                                                            shape:
-                                                                BoxShape.circle,
-                                                            
-                                                                color: Colors.green,
-                                                                //  Color.fromRGBO(
-                                                                //     89,
-                                                                //     57,
-                                                                //     241,
-                                                                //     1),
-                                                          ),
-                                                          child: GestureDetector(
-                                                            onTap: (){
-                                                              nameController.text=todoCards[index].name;
-                                                              skillController.text=todoCards[index].skill;
-                                                              chargeController.text=todoCards[index].charge;
-                                                              ageController.text=todoCards[index].age;
-                                                              contactController.text=todoCards[index].contact;
+                                                      const Spacer(),
+                                                      Container(
+                                                        height: 36,
+                                                        width: 36,
+                                                        decoration:
+                                                            const BoxDecoration(
+                                                          shape:
+                                                              BoxShape.circle,
 
-                                                              showBottomSheet(true,todoCards[index]);
-                                                              setState(() {
-                                                              });
-                                                            },
-                                                            child: const Icon(
-                                                              Icons.edit,
-                                                              color: Colors.white,
-                                                              size: 22,
-                                                            ),
-                                                          ),
+                                                          color: Colors.green,
+                                                          //  Color.fromRGBO(
+                                                          //     89,
+                                                          //     57,
+                                                          //     241,
+                                                          //     1),
                                                         ),
-                                                        const SizedBox(
-                                                          width: 5,
-                                                        ),
+                                                        child: GestureDetector(
+                                                          onTap: () {
+                                                            nameController
+                                                                    .text =
+                                                                todoCards[index]
+                                                                    .name;
+                                                            skillController
+                                                                    .text =
+                                                                todoCards[index]
+                                                                    .skill;
+                                                            chargeController
+                                                                    .text =
+                                                                todoCards[index]
+                                                                    .charge;
+                                                            ageController.text =
+                                                                todoCards[index]
+                                                                    .age;
+                                                            contactController
+                                                                    .text =
+                                                                todoCards[index]
+                                                                    .contact;
 
-                                                        GestureDetector(
-                                                          onTap: (){
-                                                            todoCards.remove(todoCards[index]);
-                                                            setState(() {
-                                                              
-                                                            });
-
+                                                            showBottomSheet(
+                                                                true,
+                                                                todoCards[
+                                                                    index]);
+                                                            setState(() {});
                                                           },
-                                                          child: Container(
+                                                          child: const Icon(
+                                                            Icons.edit,
+                                                            color: Colors.white,
+                                                            size: 22,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      const SizedBox(
+                                                        width: 5,
+                                                      ),
+
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          todoCards.remove(
+                                                              todoCards[index]);
+                                                          setState(() {});
+                                                        },
+                                                        child: Container(
                                                           height: 36,
                                                           width: 36,
                                                           decoration:
                                                               const BoxDecoration(
                                                             shape:
                                                                 BoxShape.circle,
-                                                                color: Colors.green,
+                                                            color: Colors.green,
                                                             // color: Color.fromRGBO(
                                                             //     89, 57, 241, 1),
                                                           ),
@@ -669,25 +663,22 @@ class _ExpenceManagerAppUIState extends State {
                                                             color: Colors.white,
                                                             size: 22,
                                                           ),
-                                                                                                                ),
                                                         ),
-                                                    
-
-                                                      ]),
-                                                    ],
-                                                  ),
+                                                      ),
+                                                    ]),
+                                                  ],
                                                 ),
                                               ),
-                                            ],
-                                          ),
+                                            ),
+                                          ],
                                         ),
-                                      );
-                                    }),
-                              ),
+                                      ),
+                                    );
+                                  }),
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -699,7 +690,7 @@ class _ExpenceManagerAppUIState extends State {
           onPressed: () {
             showBottomSheet(false);
           },
-          backgroundColor:Colors.green,
+          backgroundColor: Colors.green,
           child: const Icon(
             Icons.add,
             size: 30,
