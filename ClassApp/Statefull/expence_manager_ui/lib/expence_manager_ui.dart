@@ -2,10 +2,8 @@ import 'package:expence_manager_ui_ux/todo_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/svg.dart';
-//import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-//import 'package:intl/intl.dart';
 
 class ExpenceManagerAppUI extends StatefulWidget {
   const ExpenceManagerAppUI({super.key});

@@ -140,7 +140,7 @@ class _MainAppState extends State {
                             width: 500,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: Color.fromARGB(255, 221, 231, 235),
+                              color: const Color.fromARGB(255, 221, 231, 235),
                             ),
                             child: Row(
                               children: [
@@ -164,16 +164,16 @@ class _MainAppState extends State {
                                     width: 5,
                                 ),
 
-                                 Column(
+                                Column(
                                     children: [
                                         const SizedBox(
                                             height: 20,
                                         ),
-                                       const  Text("Data Science           ",
+                                      const  Text("Data Science           ",
                                         style: TextStyle(fontSize: 25,
                                         fontWeight: FontWeight.w700),
                                         ),
-                                       const  SizedBox(
+                                      const  SizedBox(
                                             height: 20,
                                             width: 200,
                                             child:  Text("Harvard Univercity                    "),

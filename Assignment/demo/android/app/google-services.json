@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "845681192189",
+    "project_id": "agreeconnect-ec2bd",
+    "storage_bucket": "agreeconnect-ec2bd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845681192189:android:1439fc191261782ae36294",
+        "android_client_info": {
+          "package_name": "com.android.application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRhMmp0LhHVY4QLRyhKrWxlKh6qUvemmM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
