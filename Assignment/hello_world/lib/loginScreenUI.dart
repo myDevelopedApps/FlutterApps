@@ -1,4 +1,4 @@
- import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:firebase_authentication/player_info.dart';
 // import 'package:firebase_authentication/register_UI';
 // import 'package:firebase_authentication_practice/playerInfo.dart';
@@ -18,6 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
       TextEditingController();
   final TextEditingController _passwordtextEditingController =
       TextEditingController();
+
   bool _showPassword = false;
   @override
   Widget build(BuildContext context) {
@@ -107,13 +108,19 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           GestureDetector(
             onTap: () async {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (context) {
-                    return PracticeFirebase();
-                  },
-                ),
-              );
+              if (_emailTextEditingController.text.trim().isNotEmpty &&
+                  _passwordtextEditingController.text.trim().isNotEmpty) {
+
+                   
+                
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return PracticeFirebase();
+                    },
+                  ),
+                );
+              }
             },
             child: Container(
               decoration: BoxDecoration(

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -100,7 +99,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
             height: 20,
           ),
           GestureDetector(
-            onTap: () async {},
+            onTap: () async {
+              if (_emailTextEditingController.text.trim().isNotEmpty &&
+                  _passwordTextEditingController.text.trim().isNotEmpty) {
+
+                    
+                  }
+            },
             child: Container(
               decoration: BoxDecoration(
                   color: Colors.white,

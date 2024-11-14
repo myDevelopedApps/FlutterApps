@@ -101,23 +101,9 @@ class _LandingScreen2State extends State<LandingScreen2> {
                       decoration: TextDecoration.none),
                 ),
               ),
-
               const SizedBox(
                 height: 14,
               ),
-              // SizedBox(
-              //   height: 39,
-              //   width: 266,
-              //   child: Text(
-              //     "----------------- sign in with -----------------",
-              //     style: GoogleFonts.amiriQuran(
-              //         fontSize: 16,
-              //         fontWeight: FontWeight.w400,
-              //         color: Colors.white,
-              //         decoration: TextDecoration.none),
-              //   ),
-              // ),
-
               Row(
                 children: [
                   Container(
