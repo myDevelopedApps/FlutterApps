@@ -74,6 +74,7 @@ class _ExpenceManagerAppUIState extends State {
         ));
       }
     }
+    clearController();
     Navigator.of(context).pop();
     clearController();
     setState(() {});
@@ -353,7 +354,7 @@ class _ExpenceManagerAppUIState extends State {
                       if (isEdit == true) {
                         submit(true, todoObj);
                       } else {
-                        submit(false);
+                        (false);
                       }
                     },
                     style: const ButtonStyle(

@@ -48,7 +48,7 @@ class _LandingScreen2State extends State<LandingScreen2> {
                   child: Center(
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
                             builder: (context) => const LoginScreen()));
                       },
                       child: Text("skip",
@@ -241,7 +241,7 @@ class _LandingScreen2State extends State<LandingScreen2> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => const LoginScreen()));
                         },
                         child: Text(

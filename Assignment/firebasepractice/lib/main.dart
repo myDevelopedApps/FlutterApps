@@ -11,7 +11,8 @@ void main() async {
           apiKey: "AIzaSyCRhMmp0LhHVY4QLRyhKrWxlKh6qUvemmM",
           appId: "845681192189",
           messagingSenderId: "1:845681192189:android:28e5b8ad8ff9b2cfe36294",
-          projectId: "agreeconnect-ec2bd"));
+          projectId: "agreeconnect-ec2bd")
+          );
   runApp(const MainApp());
 }
 
