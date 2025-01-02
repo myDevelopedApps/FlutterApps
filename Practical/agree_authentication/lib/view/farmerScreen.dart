@@ -10,7 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 // ignore: camel_case_types
 class farmerScreen extends StatelessWidget {
-  const farmerScreen({super.key});
+  const farmerScreen(index, {super.key,int? Index});
   // or StatefulWidget
   @override
   Widget build(BuildContext context) {

@@ -106,7 +106,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       (_showPassword) ? Icons.visibility_off : Icons.visibility,
                       color: Colors.white,
                     ),
-                  )),
+                  )
+                  
+                  ),
             ),
           ),
           const SizedBox(

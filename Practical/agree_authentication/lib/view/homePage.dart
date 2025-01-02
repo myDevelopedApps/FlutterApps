@@ -96,7 +96,6 @@ class _ExpenceManagerAppUIState extends State {
             content: Text("Submitted"),
           ),
         );
-        Navigator.of(context).pop();
       }
     }
     Navigator.of(context).pop();
@@ -455,7 +454,7 @@ class _ExpenceManagerAppUIState extends State {
                                 width: 460,
                                 decoration: const BoxDecoration(
                                   borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(40),
+                                    topLeft: Radius.circular(40),  
                                     topRight: Radius.circular(40),
                                   ),
                                   color: Color.fromRGBO(245, 245, 245, 1),
@@ -465,7 +464,7 @@ class _ExpenceManagerAppUIState extends State {
                                     Navigator.of(context).push(
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                const farmerScreen()));
+                                                const farmerScreen(Index)));
                                   },
                                   child: ListView.builder(
                                       physics: const BouncingScrollPhysics(),
