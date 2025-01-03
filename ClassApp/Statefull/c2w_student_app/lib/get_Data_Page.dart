@@ -27,8 +27,8 @@ class _GetDataPageState extends State<getDataPage> {
     }
 
     log("${response.docs}");
-    for (var Value in response.docs) {
-      log("${Value.data()}");
+    for (var value in response.docs) {
+      log("${value.data()}");
     }
     setState(() {
       studData = fetchedData;
