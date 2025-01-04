@@ -82,11 +82,19 @@ class _loginPageState extends State<loginPage> {
                             onPressed: () {
                               Navigator.of(context).pop(); // Close the dialog
                             },
+                            style: ButtonStyle(
+                              backgroundColor:
+                                  WidgetStatePropertyAll(Colors.orange),
+                              shape: WidgetStatePropertyAll(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10))),
+                              elevation: WidgetStatePropertyAll(5),
+                            ),
                             child: const Text("OK"),
                           ),
                         ],
                       );
-                    },
+                    },  
                   );
                 }
 

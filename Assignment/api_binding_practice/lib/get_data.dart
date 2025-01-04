@@ -20,11 +20,11 @@ class _DevicesDataState extends State<DevicesData> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Display Data Screen"),
-        centerTitle: true,
-        backgroundColor: Colors.blue,
-      ),
+        appBar: AppBar(
+          title: const Text("Display Data Screen"),
+          centerTitle: true,
+          backgroundColor: Colors.blue,
+        ),
       body: ListView.builder(
           itemCount: widget.deviceDataList.length,
           itemBuilder: (context, index) {
