@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 
 class DevicesData extends StatefulWidget {
   final String imageUrl;
-  const DevicesData({super.key, required this.imageUrl});
+  const DevicesData({
+    super.key,
+    required this.imageUrl,
+  });
 
   @override
   State<DevicesData> createState() => _DevicesDataState();
@@ -18,7 +21,7 @@ class _DevicesDataState extends State<DevicesData> {
         backgroundColor: Colors.blue,
       ),
       body: ListView.builder(
-          itemCount: 2,
+          itemCount: 1,
           itemBuilder: (context, index) {
             return Column(
               children: [
@@ -35,7 +38,8 @@ class _DevicesDataState extends State<DevicesData> {
                       child: Image.network(widget.imageUrl),
                     ),
                   ),
-                )
+                ),
+               
               ],
             );
           }),

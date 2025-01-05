@@ -75,11 +75,16 @@ class _ApiDemoState extends State<ApiDemo> {
 
   void getDeviceData() async {
     Uri url = Uri.parse("https://dog.ceo/api/breeds/image/random");
+    //Uri url2= Uri.parse("https://catfact.ninja/fact");
     http.Response response = await http.get(url);
+   // http.Response response2 = await http.get(url2);
     log(response.body);
+   // log(response2.body);
     Map<String, dynamic> jsonData = json.decode(response.body);
+   // Map<String, dynamic> jsonData2 = json.decode(response2.body);
     //List<dynamic> jsonData = json.decode(response.body);
     String imageUrl = jsonData["message"];
+    //String imageUrl2 = jsonData2["message"];
     log("JASON :$jsonData");
     log(imageUrl);
     // ignore: use_build_context_synchronously
