@@ -30,15 +30,20 @@ class _Page1State extends State<Page1> {
         child: Column(
           children: [
             Center(
-              child: Container(
-                height: 150,
-                width: 150,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(),
-                    color: Colors.amber),
-                child: Image.network(
-                    "https://cdn-icons-png.flaticon.com/512/1193/1193274.png"),
+              child: GestureDetector(
+                onTap: (){
+                  
+                },
+                child: Container(
+                  height: 150,
+                  width: 150,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(),
+                      color: Colors.amber),
+                  child: Image.network(
+                      "https://cdn-icons-png.flaticon.com/512/1193/1193274.png"),
+                ),
               ),
             ),
             const SizedBox(
@@ -89,6 +94,9 @@ class _Page1State extends State<Page1> {
               height: 20,
             ),
             GestureDetector(
+              onTap: () {
+                
+              },
               child: Container(
                 width: 200,
                 height: 50,
@@ -98,9 +106,29 @@ class _Page1State extends State<Page1> {
                 ),
                 child: Center(
                     child: Text(
-                  "Add Data",
+                  "Submit ",
                   style: GoogleFonts.poppins(
-                      fontSize: 15, fontWeight: FontWeight.bold),
+                      fontSize: 18, fontWeight: FontWeight.bold),
+                )),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            GestureDetector(
+              onTap: () {},
+              child: Container(
+                width: 200,
+                height: 50,
+                decoration: BoxDecoration(
+                  color: Colors.orange,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Center(
+                    child: Text(
+                  "Show Data",
+                  style: GoogleFonts.poppins(
+                      fontSize: 18, fontWeight: FontWeight.bold),
                 )),
               ),
             )
