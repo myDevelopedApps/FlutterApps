@@ -15,14 +15,16 @@ void insertPlayerData(player obj) async {
     "player",
     obj.playerMap(),
     conflictAlgorithm: ConflictAlgorithm.replace,
+
   );
   log("Inserted ID: $id");
 }
 
 Future<List<Map<String, dynamic>>> getPlayerData() async {
-  final localDb = await database;
 
-  return await localDb.query("player");
+final localDb = await database;
+return await localDb.query("player");
+
 }
 
 void main() async {
@@ -70,7 +72,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const HomePage(),
+      home:  HomePage(),
     );
   }
 }

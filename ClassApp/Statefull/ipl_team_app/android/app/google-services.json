@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "243406499180",
+    "project_id": "studentdata-3ad44",
+    "storage_bucket": "studentdata-3ad44.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243406499180:android:043165acdd91244b185749",
+        "android_client_info": {
+          "package_name": "com.example.auth_practice"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCp2ughML5hz1EB5I0BkqZtYrex4JqA9Lk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243406499180:android:bbfba4b08ed55d4e185749",
+        "android_client_info": {
+          "package_name": "com.example.c2w_student_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCp2ughML5hz1EB5I0BkqZtYrex4JqA9Lk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243406499180:android:efea67049b19b890185749",
+        "android_client_info": {
+          "package_name": "com.example.ipl_team_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCp2ughML5hz1EB5I0BkqZtYrex4JqA9Lk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
