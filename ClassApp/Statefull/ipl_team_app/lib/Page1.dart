@@ -1,8 +1,10 @@
 import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:ipl_team_app/Page2.dart';
 
 class Page1 extends StatefulWidget {
   const Page1({super.key});
@@ -24,127 +26,154 @@ class _Page1State extends State<Page1> {
       appBar: AppBar(
         title: Text(
           "IPL Teams",
-          style: GoogleFonts.ptSans(),
+          style: GoogleFonts.ptSans(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
         backgroundColor: Colors.orange,
       ),
       body: Padding(
         padding: EdgeInsets.all(20),
-        child: Column(
-          children: [
-            Center(
-              child: GestureDetector(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Center(
+                child: GestureDetector(
+                  onTap: () async {
+                    ImagePicker imagePicker = ImagePicker();
+                    selectImage = await imagePicker.pickImage(
+                        source: ImageSource.gallery);
+                    setState(() {});
+                    log("$selectImage");
+                  },
+                  child: Container(
+                    height: 150,
+                    width: 150,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(),
+                        color: Colors.amber),
+                    clipBehavior: Clip.antiAlias,
+                    child: (selectImage == null)
+                        ? Image.network(
+                            "https://cdn-icons-png.flaticon.com/512/1193/1193274.png")
+                        : Image.asset(
+                            selectImage!.path,
+                            fit: BoxFit.cover,
+                          ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              TextField(
+                controller: nameController,
+                decoration: InputDecoration(
+                    hintText: "Enter Player Name",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    )),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              TextField(
+                controller: jerNoController,
+                decoration: InputDecoration(
+                    hintText: "Enter Player Jersy No",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    )),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              TextField(
+                controller: teamController,
+                decoration: InputDecoration(
+                    hintText: "Enter Player IPL Team",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    )),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              TextField(
+                controller: runController,
+                decoration: InputDecoration(
+                    hintText: "Enter Player Total Runs",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    )),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              GestureDetector(
                 onTap: () async {
-                  ImagePicker imagePicker = ImagePicker();
-                  selectImage =
-                      await imagePicker.pickImage(source: ImageSource.gallery);
-                  setState(() {});
-                  log("$selectImage");
+                  if (nameController.text.trim().isNotEmpty &&
+                      jerNoController.text.trim().isNotEmpty &&
+                      teamController.text.trim().isNotEmpty &&
+                      runController.text.trim().isNotEmpty) {
+                    Map<String, dynamic> data = {
+                      "playerName": nameController.text,
+                      "jerNo": jerNoController.text,
+                      "IplTeam": teamController.text,
+                      "runs": runController.text
+                    };
+                    await FirebaseFirestore.instance
+                        .collection("playerInfo")
+                        .add(data);
+                  }
+                  nameController.clear();
+                  jerNoController.clear();
+                  teamController.clear();
+                  runController.clear();
                 },
                 child: Container(
-                  height: 150,
-                  width: 150,
+                  width: 200,
+                  height: 50,
                   decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(),
-                      color: Colors.amber),
-                  clipBehavior: Clip.antiAlias,
-                  child: (selectImage == null)
-                      ? Image.network(
-                          "https://cdn-icons-png.flaticon.com/512/1193/1193274.png")
-                      : Image.asset(
-                          selectImage!.path,
-                          fit: BoxFit.cover,
-                        ),
+                    color: Colors.orange,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Center(
+                      child: Text(
+                    "Submit ",
+                    style: GoogleFonts.poppins(
+                        fontSize: 18, fontWeight: FontWeight.bold),
+                  )),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            TextField(
-              controller: nameController,
-              decoration: InputDecoration(
-                  hintText: "Enter Player Name",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  )),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            TextField(
-              controller: jerNoController,
-              decoration: InputDecoration(
-                  hintText: "Enter Player Jersy No",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  )),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            TextField(
-              controller: teamController,
-              decoration: InputDecoration(
-                  hintText: "Enter Player IPL Team",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  )),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            TextField(
-              controller: nameController,
-              decoration: InputDecoration(
-                  hintText: "Enter Player Total Runs",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  )),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            GestureDetector(
-              onTap: () {},
-              child: Container(
-                width: 200,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Colors.orange,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Center(
-                    child: Text(
-                  "Submit ",
-                  style: GoogleFonts.poppins(
-                      fontSize: 18, fontWeight: FontWeight.bold),
-                )),
+              const SizedBox(
+                height: 20,
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            GestureDetector(
-              onTap: () {},
-              child: Container(
-                width: 200,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Colors.orange,
-                  borderRadius: BorderRadius.circular(20),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) {
+                      return Page2();
+                    },
+                  ));
+                },
+                child: Container(
+                  width: 200,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: Colors.orange,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Center(
+                      child: Text(
+                    "Show Data",
+                    style: GoogleFonts.poppins(
+                        fontSize: 18, fontWeight: FontWeight.bold),
+                  )),
                 ),
-                child: Center(
-                    child: Text(
-                  "Show Data",
-                  style: GoogleFonts.poppins(
-                      fontSize: 18, fontWeight: FontWeight.bold),
-                )),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

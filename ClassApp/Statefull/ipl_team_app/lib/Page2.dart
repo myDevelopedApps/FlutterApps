@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ipl_team_app/Page3.dart';
 
 class Page2 extends StatefulWidget {
   const Page2({super.key});
@@ -24,26 +25,38 @@ class _Page2State extends State<Page2> {
             children: [
               Row(
                 children: [
-                  Container(
-                    height: 200,
-                    width: 150,
-                    decoration: BoxDecoration(
-                      border: Border.all(),
-                      borderRadius: BorderRadius.circular(20),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => Page3()));
+                    },
+                    child: Container(
+                      height: 200,
+                      width: 150,
+                      decoration: BoxDecoration(
+                        border: Border.all(),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Image.asset("assets/images/csk.jpg"),
                     ),
-                    child: Image.asset("assets/images/csk.jpg"),
                   ),
                   SizedBox(
                     width: 20,
                   ),
-                  Container(
-                    height: 200,
-                    width: 150,
-                    decoration: BoxDecoration(
-                      border: Border.all(),
-                      borderRadius: BorderRadius.circular(20),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => Page3()));
+                    },
+                    child: Container(
+                      height: 200,
+                      width: 150,
+                      decoration: BoxDecoration(
+                        border: Border.all(),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Image.asset("assets/images/mi.jpg"),
                     ),
-                    child: Image.asset("assets/images/mi.jpg"),
                   ),
                 ],
               ),
@@ -52,26 +65,38 @@ class _Page2State extends State<Page2> {
               ),
               Row(
                 children: [
-                  Container(
-                    height: 200,
-                    width: 150,
-                    decoration: BoxDecoration(
-                      border: Border.all(),
-                      borderRadius: BorderRadius.circular(20),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => Page3()));
+                    },
+                    child: Container(
+                      height: 200,
+                      width: 150,
+                      decoration: BoxDecoration(
+                        border: Border.all(),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Image.asset("assets/images/kkr.jpg"),
                     ),
-                    child: Image.asset("assets/images/kkr.jpg"),
                   ),
                   SizedBox(
                     width: 20,
                   ),
-                  Container(
-                    height: 200,
-                    width: 150,
-                    decoration: BoxDecoration(
-                      border: Border.all(),
-                      borderRadius: BorderRadius.circular(20),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => Page3()));
+                    },
+                    child: Container(
+                      height: 200,
+                      width: 150,
+                      decoration: BoxDecoration(
+                        border: Border.all(),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Image.asset("assets/images/rcb.jpg"),
                     ),
-                    child: Image.asset("assets/images/rcb.jpg"),
                   ),
                 ],
               ),
