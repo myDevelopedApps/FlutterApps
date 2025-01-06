@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Page1 extends StatefulWidget {
   const Page1({super.key});
@@ -13,6 +16,7 @@ class _Page1State extends State<Page1> {
   TextEditingController jerNoController = TextEditingController();
   TextEditingController teamController = TextEditingController();
   TextEditingController runController = TextEditingController();
+  XFile? selectImage;
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +35,12 @@ class _Page1State extends State<Page1> {
           children: [
             Center(
               child: GestureDetector(
-                onTap: (){
-                  
+                onTap: () async {
+                  ImagePicker imagePicker = ImagePicker();
+                  selectImage =
+                      await imagePicker.pickImage(source: ImageSource.gallery);
+                  setState(() {});
+                  log("$selectImage");
                 },
                 child: Container(
                   height: 150,
@@ -41,8 +49,14 @@ class _Page1State extends State<Page1> {
                       shape: BoxShape.circle,
                       border: Border.all(),
                       color: Colors.amber),
-                  child: Image.network(
-                      "https://cdn-icons-png.flaticon.com/512/1193/1193274.png"),
+                  clipBehavior: Clip.antiAlias,
+                  child: (selectImage == null)
+                      ? Image.network(
+                          "https://cdn-icons-png.flaticon.com/512/1193/1193274.png")
+                      : Image.asset(
+                          selectImage!.path,
+                          fit: BoxFit.cover,
+                        ),
                 ),
               ),
             ),
@@ -94,9 +108,7 @@ class _Page1State extends State<Page1> {
               height: 20,
             ),
             GestureDetector(
-              onTap: () {
-                
-              },
+              onTap: () {},
               child: Container(
                 width: 200,
                 height: 50,
