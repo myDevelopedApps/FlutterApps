@@ -33,7 +33,7 @@ class _Page2State extends State<Page2> {
   //   }
   //   setState(() {});
   // }
-  List studData = [];
+  List teamData = [];
   void initState() {
     super.initState();
     fetchData();
@@ -41,18 +41,23 @@ class _Page2State extends State<Page2> {
 
   void fetchData() async {
     QuerySnapshot response =
-        await FirebaseFirestore.instance.collection("PlayerInfo").get();
+        await FirebaseFirestore.instance.collection("playerInfo").get();
+
     List<Map<String, dynamic>> fetchedData = [];
+
     for (var doc in response.docs) {
+      
       fetchedData.add(doc.data() as Map<String, dynamic>);
     }
 
-    log("${response.docs}");
+    log("${response.docs.length}");
+
     for (var value in response.docs) {
       log("${value.data()}");
     }
     setState(() {
-      studData = fetchedData;
+      teamData = fetchedData;
+     
     });
   }
 

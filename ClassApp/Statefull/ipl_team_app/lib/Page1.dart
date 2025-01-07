@@ -10,7 +10,6 @@ import 'package:ipl_team_app/Page2.dart';
 
 class Page1 extends StatefulWidget {
   const Page1({super.key});
-
   @override
   State<Page1> createState() => _Page1State();
 }
@@ -120,19 +119,22 @@ class _Page1State extends State<Page1> {
                       jerNoController.text.trim().isNotEmpty &&
                       teamController.text.trim().isNotEmpty &&
                       runController.text.trim().isNotEmpty) {
+
+                    /*   
                     final storageref = FirebaseStorage.instance
                         .ref()
                         .child("${teamController.text}/${nameController.text}");
                     await storageref.putFile(File(selectImage!.path));
 
                     String imageURL = await storageref.getDownloadURL();
+                    */
 
                     Map<String, dynamic> data = {
                       "playerName": nameController.text,
                       "jerNo": jerNoController.text,
                       "IplTeam": teamController.text,
                       "runs": runController.text,
-                      "imageURL": imageURL,
+                      //"imageURL": imageURL,
                     };
                     await FirebaseFirestore.instance
                         .collection("playerInfo")
