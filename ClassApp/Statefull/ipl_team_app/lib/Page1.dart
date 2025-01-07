@@ -1,6 +1,8 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
@@ -46,21 +48,22 @@ class _Page1State extends State<Page1> {
                     log("$selectImage");
                   },
                   child: Container(
-                    height: 150,
-                    width: 150,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(),
-                        color: Colors.amber),
-                    clipBehavior: Clip.antiAlias,
-                    child: (selectImage == null)
-                        ? Image.network(
-                            "https://cdn-icons-png.flaticon.com/512/1193/1193274.png")
-                        : Image.asset(
-                            selectImage!.path,
-                            fit: BoxFit.cover,
-                          ),
-                  ),
+                      height: 150,
+                      width: 150,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(),
+                          color: Colors.amber),
+                      clipBehavior: Clip.antiAlias,
+                      child: (selectImage == null)
+                          ? Image.network(
+                              "https://cdn-icons-png.flaticon.com/512/1193/1193274.png")
+                          : Image.file(
+                              File(
+                                selectImage!.path,
+                              ),
+                              fit: BoxFit.cover,
+                            )),
                 ),
               ),
               const SizedBox(
@@ -112,15 +115,24 @@ class _Page1State extends State<Page1> {
               ),
               GestureDetector(
                 onTap: () async {
-                  if (nameController.text.trim().isNotEmpty &&
+                  if (selectImage != null &&
+                      nameController.text.trim().isNotEmpty &&
                       jerNoController.text.trim().isNotEmpty &&
                       teamController.text.trim().isNotEmpty &&
                       runController.text.trim().isNotEmpty) {
+                    final storageref = FirebaseStorage.instance
+                        .ref()
+                        .child("${teamController.text}/${nameController.text}");
+                    await storageref.putFile(File(selectImage!.path));
+
+                    String imageURL = await storageref.getDownloadURL();
+
                     Map<String, dynamic> data = {
                       "playerName": nameController.text,
                       "jerNo": jerNoController.text,
                       "IplTeam": teamController.text,
-                      "runs": runController.text
+                      "runs": runController.text,
+                      "imageURL": imageURL,
                     };
                     await FirebaseFirestore.instance
                         .collection("playerInfo")
@@ -130,6 +142,8 @@ class _Page1State extends State<Page1> {
                   jerNoController.clear();
                   teamController.clear();
                   runController.clear();
+                  selectImage = null;
+                  setState(() {});
                 },
                 child: Container(
                   width: 200,
@@ -171,7 +185,7 @@ class _Page1State extends State<Page1> {
                         fontSize: 18, fontWeight: FontWeight.bold),
                   )),
                 ),
-              )
+              ),
             ],
           ),
         ),

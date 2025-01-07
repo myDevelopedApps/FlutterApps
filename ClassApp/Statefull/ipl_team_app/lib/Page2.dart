@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:ipl_team_app/Page3.dart';
 
@@ -9,6 +12,50 @@ class Page2 extends StatefulWidget {
 }
 
 class _Page2State extends State<Page2> {
+  @override
+  // void initState() {
+  //   super.initState();
+  //   fetchData();
+  //   log("KKKKKKKKKKKKKKKKKKK");
+  // }
+
+  // void fetchData() async {
+  //   log("gggggggggggggggg");
+  //   QuerySnapshot response =
+  //       await FirebaseFirestore.instance.collection("PlayerInfo").get();
+  //   List<Map<String, dynamic>> fetchedData = [];
+
+  //   for (var value in response.docs) {
+  //     log("llllllllll");
+  //     log("${value.data()}");
+  //     fetchedData.add(value.data() as Map<String, dynamic>);
+  //     log("FETECHEDDATA:  $fetchedData");
+  //   }
+  //   setState(() {});
+  // }
+  List studData = [];
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  void fetchData() async {
+    QuerySnapshot response =
+        await FirebaseFirestore.instance.collection("PlayerInfo").get();
+    List<Map<String, dynamic>> fetchedData = [];
+    for (var doc in response.docs) {
+      fetchedData.add(doc.data() as Map<String, dynamic>);
+    }
+
+    log("${response.docs}");
+    for (var value in response.docs) {
+      log("${value.data()}");
+    }
+    setState(() {
+      studData = fetchedData;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -179,6 +226,7 @@ class _Page2State extends State<Page2> {
                       border: Border.all(),
                       borderRadius: BorderRadius.circular(20),
                     ),
+                    //child: Text("${fetchedData()}"),
                   ),
                 ],
               ),
