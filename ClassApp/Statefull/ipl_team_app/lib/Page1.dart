@@ -20,6 +20,7 @@ class _Page1State extends State<Page1> {
   TextEditingController teamController = TextEditingController();
   TextEditingController runController = TextEditingController();
   XFile? selectImage;
+  String? selectedteam;
 
   @override
   Widget build(BuildContext context) {
@@ -90,14 +91,47 @@ class _Page1State extends State<Page1> {
               const SizedBox(
                 height: 20,
               ),
-              TextField(
-                controller: teamController,
+              // TextField(
+              //   controller: teamController,
+              //   decoration: InputDecoration(
+              //       hintText: "Enter Player IPL Team",
+              //       border: OutlineInputBorder(
+              //         borderRadius: BorderRadius.circular(20),
+              //       )),
+              // ),
+              DropdownButtonFormField<String>(
+                value: selectedteam,
                 decoration: InputDecoration(
-                    hintText: "Enter Player IPL Team",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    )),
+                  hintText: "Select Player IPL Team",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                items: [
+                  "CSK",
+                  "RCB",
+                  "MI",
+                  "KKR",
+                  "SRH",
+                  "DC",
+                  "RR",
+                  "PBKS",
+                  "LSG",
+                  "GT"
+                ]
+                    .map((team) => DropdownMenuItem<String>(
+                          value: team,
+                          child: Text(team),
+                        ))
+                    .toList(),
+                onChanged: (value) {
+                  setState(() {
+                    selectedteam = value; // Update the selected team
+                    teamController.text = value!; // Set the teamController text
+                  });
+                },
               ),
+
               const SizedBox(
                 height: 20,
               ),
@@ -119,7 +153,6 @@ class _Page1State extends State<Page1> {
                       jerNoController.text.trim().isNotEmpty &&
                       teamController.text.trim().isNotEmpty &&
                       runController.text.trim().isNotEmpty) {
-
                     /*   
                     final storageref = FirebaseStorage.instance
                         .ref()
@@ -145,7 +178,10 @@ class _Page1State extends State<Page1> {
                   teamController.clear();
                   runController.clear();
                   selectImage = null;
-                  setState(() {});
+
+                  setState(() {
+                    selectedteam = null;
+                  });
                 },
                 child: Container(
                   width: 200,

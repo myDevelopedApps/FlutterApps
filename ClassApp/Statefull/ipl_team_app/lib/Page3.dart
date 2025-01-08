@@ -18,7 +18,9 @@ class _Page3State extends State<Page3> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text("IPL Teams"),
+        title: (widget.teamData == null || widget.teamData.isEmpty)
+            ? Text("IPL Teams")
+            : Text(" ${widget.teamData[0]["IplTeam"]} Players"),
         backgroundColor: Colors.blue,
         centerTitle: true,
       ),
@@ -34,20 +36,32 @@ class _Page3State extends State<Page3> {
                   height: 120,
                   width: 400,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    border: Border.all(),
-                  ),
+                      borderRadius: BorderRadius.circular(15),
+                      border: Border.all(),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey,
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: Offset(2, 5))
+                      ]),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
-                          height: 100,
-                          width: 100,
+                          height: 90,
+                          width: 90,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(),
+                          ),
+                          clipBehavior: Clip.antiAlias,
+                          child: Icon(
+                            Icons.person,
+                            size: 60,
                           ),
                         ),
                       ),
@@ -55,21 +69,34 @@ class _Page3State extends State<Page3> {
                         width: 10,
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 25),
+                        padding: const EdgeInsets.only(top: 17),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Name:${player["playerName"]}",
+                              "Name : ${player["playerName"]}",
                               style: GoogleFonts.poppins(
-                                fontSize: 20,
+                                fontSize: 17,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 4,
+                            ),
+                            Text(
+                              "Jersey no : ${player["jerNo"]}",
+                              style: GoogleFonts.poppins(
+                                fontSize: 15,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
+                            SizedBox(
+                              height: 4,
+                            ),
                             Text(
-                              "Jersey no:${player["jerNo"]}",
+                              "Runs : ${player["runs"]}",
                               style: GoogleFonts.poppins(
-                                fontSize: 20,
+                                fontSize: 15,
                                 fontWeight: FontWeight.w500,
                               ),
                             )

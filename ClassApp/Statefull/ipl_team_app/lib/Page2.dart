@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -11,9 +13,8 @@ class Page2 extends StatefulWidget {
 }
 
 class _Page2State extends State<Page2> {
-  @override
   List teamData = [];
-
+  @override
   void initState() {
     super.initState();
     fetchData();
@@ -26,15 +27,12 @@ class _Page2State extends State<Page2> {
     for (var doc in response.docs) {
       fetchedData.add(doc.data() as Map<String, dynamic>);
     }
-    log("FETCHED DATA:${fetchedData}");
+    log("FETCHED DATA:$fetchedData");
     log("${response.docs.length}");
-    for (var value in response.docs) {
-      log("${value.data()}");
-    }
     setState(() {
       teamData = fetchedData;
     });
-    log("TEAMDATA: ${teamData}");
+    log("TEAMDATA: $teamData");
   }
 
   @override
@@ -192,7 +190,7 @@ class _Page2State extends State<Page2> {
                   GestureDetector(
                     onTap: () {
                       var KXIPSpecificData = teamData
-                          .where((data) => data['IplTeam'] == 'KXIP')
+                          .where((data) => data['IplTeam'] == 'PBKS')
                           .toList()
                           .cast<Map<String, dynamic>>();
                       Navigator.of(context).push(MaterialPageRoute(
