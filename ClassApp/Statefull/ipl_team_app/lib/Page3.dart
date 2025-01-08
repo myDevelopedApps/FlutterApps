@@ -19,9 +19,9 @@ class _Page3State extends State<Page3> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: (widget.teamData == null || widget.teamData.isEmpty)
-            ? Text("IPL Teams")
+            ? Text("Players")
             : Text(" ${widget.teamData[0]["IplTeam"]} Players"),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.deepOrange,
         centerTitle: true,
       ),
       body: ListView.builder(

@@ -31,7 +31,7 @@ class _Page1State extends State<Page1> {
           style: GoogleFonts.ptSans(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-        backgroundColor: Colors.orange,
+        backgroundColor: Colors.deepOrange,
       ),
       body: Padding(
         padding: EdgeInsets.all(20),
@@ -56,8 +56,7 @@ class _Page1State extends State<Page1> {
                           color: Colors.amber),
                       clipBehavior: Clip.antiAlias,
                       child: (selectImage == null)
-                          ? Image.network(
-                              "https://cdn-icons-png.flaticon.com/512/1193/1193274.png")
+                          ? Image.asset("assets/images/cricket.jpg")
                           : Image.file(
                               File(
                                 selectImage!.path,
@@ -187,7 +186,7 @@ class _Page1State extends State<Page1> {
                   width: 200,
                   height: 50,
                   decoration: BoxDecoration(
-                    color: Colors.orange,
+                    color: Colors.deepOrange,
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Center(
@@ -213,7 +212,7 @@ class _Page1State extends State<Page1> {
                   width: 200,
                   height: 50,
                   decoration: BoxDecoration(
-                    color: Colors.orange,
+                    color: Colors.deepOrange,
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Center(

@@ -271,25 +271,55 @@ class _Page2State extends State<Page2> {
               ),
               Row(
                 children: [
-                  Container(
-                    height: 200,
-                    width: 150,
-                    decoration: BoxDecoration(
-                      border: Border.all(),
-                      borderRadius: BorderRadius.circular(20),
+                  GestureDetector(
+                    onTap: () {
+                      var DCSpecificData = teamData
+                          .where((data) => data['IplTeam'] == 'LSG')
+                          .toList()
+                          .cast<Map<String, dynamic>>();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Page3(
+                                teamData: DCSpecificData,
+                              )));
+                    },
+                    child: Container(
+                      height: 200,
+                      width: 150,
+                      decoration: BoxDecoration(
+                        border: Border.all(),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      clipBehavior: Clip.antiAlias,
+                      child: Image.asset(
+                        "assets/images/LSG.jpg",
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   SizedBox(
                     width: 20,
                   ),
-                  Container(
-                    height: 200,
-                    width: 150,
-                    decoration: BoxDecoration(
-                      border: Border.all(),
-                      borderRadius: BorderRadius.circular(20),
+                  GestureDetector(
+                    onTap: () {
+                      var DCSpecificData = teamData
+                          .where((data) => data['IplTeam'] == 'GT')
+                          .toList()
+                          .cast<Map<String, dynamic>>();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Page3(
+                                teamData: DCSpecificData,
+                              )));
+                    },
+                    child: Container(
+                      height: 200,
+                      width: 150,
+                      decoration: BoxDecoration(
+                        border: Border.all(),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Image.asset("assets/images/GT.jpg"),
+                      clipBehavior: Clip.antiAlias,
                     ),
-                    //child: Text("${fetchedData()}"),
                   ),
                 ],
               ),
