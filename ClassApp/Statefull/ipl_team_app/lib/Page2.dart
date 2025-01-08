@@ -36,6 +36,7 @@ class _Page2State extends State<Page2> {
     });
     log("TEAMDATA: ${teamData}");
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,13 +55,13 @@ class _Page2State extends State<Page2> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      var teamSpecificData = teamData
+                      var CSKteamData = teamData
                           .where((data) => data['IplTeam'] == 'CSK')
                           .toList()
                           .cast<Map<String, dynamic>>();
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => Page3(
-                                teamData: teamSpecificData,
+                                teamData: CSKteamData,
                               )));
                     },
                     child: Container(
@@ -78,8 +79,16 @@ class _Page2State extends State<Page2> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      // Navigator.of(context).push(
-                      //     MaterialPageRoute(builder: (context) => Page3()));
+                      var MIteamData = teamData
+                          .where((data) =>
+                              data['IplTeam'] == 'MI' ||
+                              data['IplTeam'] == 'mi')
+                          .toList()
+                          .cast<Map<String, dynamic>>();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Page3(
+                                teamData: MIteamData,
+                              )));
                     },
                     child: Container(
                       height: 200,
@@ -100,8 +109,16 @@ class _Page2State extends State<Page2> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      // Navigator.of(context).push(
-                      //     MaterialPageRoute(builder: (context) => Page3()));
+                      var KKRteamData = teamData
+                          .where((data) =>
+                              data['IplTeam'] == 'KKR' ||
+                              data['IplTeam'] == 'kkr')
+                          .toList()
+                          .cast<Map<String, dynamic>>();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Page3(
+                                teamData: KKRteamData,
+                              )));
                     },
                     child: Container(
                       height: 200,
@@ -118,8 +135,16 @@ class _Page2State extends State<Page2> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      // Navigator.of(context).push(
-                      //     MaterialPageRoute(builder: (context) => Page3()));
+                      var RCBteamData = teamData
+                          .where((data) =>
+                              data['IplTeam'] == 'RCB' ||
+                              data['IplTeam'] == 'rcb')
+                          .toList()
+                          .cast<Map<String, dynamic>>();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Page3(
+                                teamData: RCBteamData,
+                              )));
                     },
                     child: Container(
                       height: 200,
@@ -138,26 +163,52 @@ class _Page2State extends State<Page2> {
               ),
               Row(
                 children: [
-                  Container(
-                    height: 200,
-                    width: 150,
-                    decoration: BoxDecoration(
-                      border: Border.all(),
-                      borderRadius: BorderRadius.circular(20),
+                  GestureDetector(
+                    onTap: () {
+                      var RRSpecificData = teamData
+                          .where((data) =>
+                              data['IplTeam'] == 'RR' ||
+                              data['IplTeam'] == 'rr')
+                          .toList()
+                          .cast<Map<String, dynamic>>();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Page3(
+                                teamData: RRSpecificData,
+                              )));
+                    },
+                    child: Container(
+                      height: 200,
+                      width: 150,
+                      decoration: BoxDecoration(
+                        border: Border.all(),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Image.asset("assets/images/rr.jpg"),
                     ),
-                    child: Image.asset("assets/images/rr.jpg"),
                   ),
                   SizedBox(
                     width: 20,
                   ),
-                  Container(
-                    height: 200,
-                    width: 150,
-                    decoration: BoxDecoration(
-                      border: Border.all(),
-                      borderRadius: BorderRadius.circular(20),
+                  GestureDetector(
+                    onTap: () {
+                      var KXIPSpecificData = teamData
+                          .where((data) => data['IplTeam'] == 'KXIP')
+                          .toList()
+                          .cast<Map<String, dynamic>>();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Page3(
+                                teamData: KXIPSpecificData,
+                              )));
+                    },
+                    child: Container(
+                      height: 200,
+                      width: 150,
+                      decoration: BoxDecoration(
+                        border: Border.all(),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Image.asset("assets/images/punjab.jpg"),
                     ),
-                    child: Image.asset("assets/images/punjab.jpg"),
                   ),
                 ],
               ),
@@ -166,26 +217,54 @@ class _Page2State extends State<Page2> {
               ),
               Row(
                 children: [
-                  Container(
-                    height: 200,
-                    width: 150,
-                    decoration: BoxDecoration(
-                      border: Border.all(),
-                      borderRadius: BorderRadius.circular(20),
+                  GestureDetector(
+                    onTap: () {
+                      var SRHSpecificData = teamData
+                          .where((data) =>
+                              data['IplTeam'] == 'SRH' ||
+                              data['IplTeam'] == 'srh')
+                          .toList()
+                          .cast<Map<String, dynamic>>();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Page3(
+                                teamData: SRHSpecificData,
+                              )));
+                    },
+                    child: Container(
+                      height: 200,
+                      width: 150,
+                      decoration: BoxDecoration(
+                        border: Border.all(),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Image.asset("assets/images/srh.jpg"),
                     ),
-                    child: Image.asset("assets/images/srh.jpg"),
                   ),
                   SizedBox(
                     width: 20,
                   ),
-                  Container(
-                    height: 200,
-                    width: 150,
-                    decoration: BoxDecoration(
-                      border: Border.all(),
-                      borderRadius: BorderRadius.circular(20),
+                  GestureDetector(
+                    onTap: () {
+                      var DCSpecificData = teamData
+                          .where((data) =>
+                              data['IplTeam'] == 'DC' ||
+                              data['IplTeam'] == 'dc')
+                          .toList()
+                          .cast<Map<String, dynamic>>();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Page3(
+                                teamData: DCSpecificData,
+                              )));
+                    },
+                    child: Container(
+                      height: 200,
+                      width: 150,
+                      decoration: BoxDecoration(
+                        border: Border.all(),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Image.asset("assets/images/dc.jpg"),
                     ),
-                    child: Image.asset("assets/images/dc.jpg"),
                   ),
                 ],
               ),
