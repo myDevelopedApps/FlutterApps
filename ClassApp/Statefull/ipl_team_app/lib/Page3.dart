@@ -1,8 +1,11 @@
+import "dart:developer";
+
 import "package:flutter/material.dart";
 import "package:google_fonts/google_fonts.dart";
 
 class Page3 extends StatefulWidget {
-  const Page3({super.key});
+  final List<Map<String, dynamic>> teamData;
+  const Page3({super.key, required this.teamData});
 
   @override
   State<Page3> createState() => _Page3State();
@@ -11,6 +14,7 @@ class Page3 extends StatefulWidget {
 class _Page3State extends State<Page3> {
   @override
   Widget build(BuildContext context) {
+    log("${widget.teamData}");
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -19,8 +23,9 @@ class _Page3State extends State<Page3> {
         centerTitle: true,
       ),
       body: ListView.builder(
-        itemCount: 1,
+        itemCount: widget.teamData.length,
         itemBuilder: (context, index) {
+          var player = widget.teamData[index];
           return Padding(
             padding: const EdgeInsets.all(15),
             child: Column(
@@ -55,14 +60,14 @@ class _Page3State extends State<Page3> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Name: Rohit Sharma",
+                              "Name:${player["playerName"]}",
                               style: GoogleFonts.poppins(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
                             Text(
-                              "Jersey no: 45",
+                              "Jersey no:${player["jerNo"]}",
                               style: GoogleFonts.poppins(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w500,

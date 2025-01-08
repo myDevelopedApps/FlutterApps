@@ -6,34 +6,14 @@ import 'package:ipl_team_app/Page3.dart';
 
 class Page2 extends StatefulWidget {
   const Page2({super.key});
-
   @override
   State<Page2> createState() => _Page2State();
 }
 
 class _Page2State extends State<Page2> {
   @override
-  // void initState() {
-  //   super.initState();
-  //   fetchData();
-  //   log("KKKKKKKKKKKKKKKKKKK");
-  // }
-
-  // void fetchData() async {
-  //   log("gggggggggggggggg");
-  //   QuerySnapshot response =
-  //       await FirebaseFirestore.instance.collection("PlayerInfo").get();
-  //   List<Map<String, dynamic>> fetchedData = [];
-
-  //   for (var value in response.docs) {
-  //     log("llllllllll");
-  //     log("${value.data()}");
-  //     fetchedData.add(value.data() as Map<String, dynamic>);
-  //     log("FETECHEDDATA:  $fetchedData");
-  //   }
-  //   setState(() {});
-  // }
   List teamData = [];
+
   void initState() {
     super.initState();
     fetchData();
@@ -42,25 +22,20 @@ class _Page2State extends State<Page2> {
   void fetchData() async {
     QuerySnapshot response =
         await FirebaseFirestore.instance.collection("playerInfo").get();
-
     List<Map<String, dynamic>> fetchedData = [];
-
     for (var doc in response.docs) {
-      
       fetchedData.add(doc.data() as Map<String, dynamic>);
     }
-
+    log("FETCHED DATA:${fetchedData}");
     log("${response.docs.length}");
-
     for (var value in response.docs) {
       log("${value.data()}");
     }
     setState(() {
       teamData = fetchedData;
-     
     });
+    log("TEAMDATA: ${teamData}");
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,8 +54,14 @@ class _Page2State extends State<Page2> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => Page3()));
+                      var teamSpecificData = teamData
+                          .where((data) => data['IplTeam'] == 'CSK')
+                          .toList()
+                          .cast<Map<String, dynamic>>();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Page3(
+                                teamData: teamSpecificData,
+                              )));
                     },
                     child: Container(
                       height: 200,
@@ -97,8 +78,8 @@ class _Page2State extends State<Page2> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => Page3()));
+                      // Navigator.of(context).push(
+                      //     MaterialPageRoute(builder: (context) => Page3()));
                     },
                     child: Container(
                       height: 200,
@@ -119,8 +100,8 @@ class _Page2State extends State<Page2> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => Page3()));
+                      // Navigator.of(context).push(
+                      //     MaterialPageRoute(builder: (context) => Page3()));
                     },
                     child: Container(
                       height: 200,
@@ -137,8 +118,8 @@ class _Page2State extends State<Page2> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => Page3()));
+                      // Navigator.of(context).push(
+                      //     MaterialPageRoute(builder: (context) => Page3()));
                     },
                     child: Container(
                       height: 200,
