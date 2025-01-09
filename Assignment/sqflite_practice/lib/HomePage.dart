@@ -5,7 +5,7 @@ import 'package:sqflite_practice/data_fetch.dart';
 import 'package:sqflite_practice/player_model.dart';
 
 class HomePage extends StatefulWidget {
-  // List<Map<String,dynamic>> list=[];
+
   const HomePage({
     super.key,
   });

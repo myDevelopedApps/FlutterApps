@@ -55,11 +55,14 @@ void main() async {
       player(playerName: "MSD", jerNo: 7, runs: 24000, average: 39.90);
   player pObj4 =
       player(playerName: "KLRahul", jerNo: 1, runs: 22000, average: 49.90);
+        player pObj5 =
+      player(playerName: "hardik", jerNo: 12, runs: 220200, average: 19.90);
 
   insertPlayerData(pObj1);
   insertPlayerData(pObj2);
   insertPlayerData(pObj3);
   insertPlayerData(pObj4);
+  insertPlayerData(pObj5);
 
   final players = await getPlayerData();
   log("Players: $players");

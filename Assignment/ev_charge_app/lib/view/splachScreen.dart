@@ -1,5 +1,5 @@
 
-import 'package:ev_charge_app/homeScreen.dart';
+import 'package:ev_charge_app/view/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
@@ -17,8 +17,8 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _navigateToHome() async {
-    await Future.delayed(Duration(seconds: 10)); // Wait for 5 seconds
-    Get.off(() => HomeScreen());
+    await Future.delayed(Duration(seconds: 5)); // Wait for 5 seconds
+    Get.off(() => HomePage());
   }
 
   @override
@@ -51,7 +51,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 return Opacity(
                   opacity: opacity,
                   child: Text(
-                    "EV Charging App",
+                    "TeCell App",
                     style: GoogleFonts.poppins(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
