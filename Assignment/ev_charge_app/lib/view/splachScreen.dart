@@ -5,7 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _SplashScreenState createState() => _SplashScreenState();
 }
 
@@ -29,7 +32,6 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Animated logo
             TweenAnimationBuilder<double>(
               tween: Tween<double>(begin: 100, end: 200),
               duration: Duration(seconds: 2),
